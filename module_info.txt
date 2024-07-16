@@ -1,0 +1,40 @@
+module name : adder
+
+parameters:
+width       = 8
+op_width    = 3
+
+inputs:
+a     width     wire
+b     width     wire
+op   op_width   wire
+mode    1       wire
+clk     1       wire
+rstn    1       wire
+
+outputs:
+result  20      reg
+flag     1      wire
+
+design_info:
+seq     clk     pos     rstn    sync    neg
+----------------------------------------------
+module name : memory
+
+parameters:
+width = 32
+depth = 256
+
+inputs:
+address     $clog2(depth)    wire
+datain      20               wire
+write_en    1                wire
+clk         1                wire
+rst         1                wire
+
+outputs:
+data_out    width            wire
+full        1                wire
+
+design_info:
+seq     clk     pos     rst    async    pos
