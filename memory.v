@@ -1,6 +1,6 @@
 module memory #(parameter width = 32, depth = 256)( 
 //--------------------Input Ports---------------------
-input wire [$clog2(depth)-1 : 0] address,
+input wire [depth-1 : 0] address,
 input wire [20-1 : 0] datain,
 input wire write_en,
 input wire clk,

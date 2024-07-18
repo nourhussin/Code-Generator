@@ -4,7 +4,7 @@ module memory_tb;
 localparam width = 32;
 localparam depth = 256;
 //--------------------Inputs---------------------
-reg [$clog2(depth)-1 : 0] address_tb;
+reg [depth-1 : 0] address_tb;
 reg [20-1 : 0] datain_tb;
 reg write_en_tb;
 reg clk_tb;
