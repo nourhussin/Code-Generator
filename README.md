@@ -18,7 +18,7 @@ This Python script generates templates for Verilog modules and their correspondi
 
 ## Important Notes
 
-- *Files will not be generated if there is an error in the input data*
+- **Files will not be generated if there is an error in the input data**
   
 ### In the design info section:
 - The first option is seq or comb (sequential or combinational logic).
