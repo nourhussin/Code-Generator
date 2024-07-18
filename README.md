@@ -18,8 +18,8 @@ This Python script generates templates for Verilog modules and their correspondi
 
 ## Important Notes
 
-- Clock and reset must have the same variable name in both the inputs section and design info section.
-- Users are responsible for writing valid variable names.
+- *Files will not be generated if there is an error in the input data*
+  
 ### In the design info section:
 - The first option is seq or comb (sequential or combinational logic).
 - The third and last options are pos or neg (positive or negative edge).
