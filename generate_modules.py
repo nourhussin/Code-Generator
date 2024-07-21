@@ -1,6 +1,20 @@
 def is_valid_variable(s):
     invalid_characters = set('!@#$%^&*()-=+[{]}\\|;:\'",<.>/?`~ ')
-    if any(char in invalid_characters for char in s) or s[0] in "_0123456789":
+    verilog_keywords = [
+    'always', 'and', 'assign', 'automatic', 'begin', 'buf', 'bufif0', 'bufif1', 'case', 'casex', 'casez', 'cell', 'cmos', 
+    'config', 'deassign', 'default', 'defparam', 'design', 'disable', 'edge', 'else', 'end', 'endcase', 'endconfig', 
+    'endfunction', 'endgenerate', 'endmodule', 'endprimitive', 'endspecify', 'endtable', 'endtask', 'event', 'for', 
+    'force', 'forever', 'fork', 'function', 'generate', 'genvar', 'highz0', 'highz1', 'if', 'ifnone', 'incdir', 'include', 
+    'initial', 'inout', 'input', 'instance', 'integer', 'join', 'large', 'liblist', 'library', 'localparam', 'macromodule', 
+    'medium', 'module', 'nand', 'negedge', 'nmos', 'nor', 'noshowcancelled', 'not', 'notif0', 'notif1', 'or', 'output', 
+    'parameter', 'pmos', 'posedge', 'primitive', 'pull0', 'pull1', 'pulldown', 'pullup', 'pulsestyle_onevent', 
+    'pulsestyle_ondetect', 'rcmos', 'real', 'realtime', 'reg', 'release', 'repeat', 'rnmos', 'rpmos', 'rtran', 'rtranif0', 
+    'rtranif1', 'scalared', 'showcancelled', 'signed', 'small', 'specify', 'specparam', 'strong0', 'strong1', 'supply0', 
+    'supply1', 'table', 'task', 'time', 'tran', 'tranif0', 'tranif1', 'tri', 'tri0', 'tri1', 'triand', 'trior', 'trireg', 
+    'unsigned', 'use', 'vectored', 'wait', 'wand', 'weak0', 'weak1', 'while', 'wire', 'wor', 'xnor', 'xor'
+    ]
+
+    if any(char in invalid_characters for char in s) or s[0] in "_0123456789" or s in verilog_keywords:
         return False
     else:
         return True
@@ -95,6 +109,10 @@ modules = read_modules_from_file(file_path)
 for module in modules:
     # Check Variable names
     number_of_errors = 0
+    if not(is_valid_variable(module['module_name'])):
+        number_of_errors += 1
+        print("Error in %s ---> invalid module name" %module['module_name'])
+
     for key in module['parameters']:
         if not(is_valid_variable(key)):
             number_of_errors += 1
